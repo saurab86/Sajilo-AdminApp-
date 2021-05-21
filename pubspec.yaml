@@ -1,0 +1,80 @@
+name: admin
+description: A new Flutter project.
+
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^1.0.2
+  firebase_database: ^6.1.2
+  fluttertoast: ^8.0.6
+  foldable_sidebar: ^1.0.0
+  swipedetector: ^1.2.0
+  flutter_screenutil: ^1.0.2
+  provider: ^4.3.2
+  firebase_dynamic_links: ^0.8.0
+  firebase_auth: ^1.0.3
+  firebase_core: ^1.0.3
+  cloud_firestore: ^1.0.4
+  google_sign_in: ^4.5.1
+  flutter_twitter: ^1.1.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/notification.png
+    - assets/calendar.png
+    - assets/festival.png
+    - assets/food.png
+    - assets/map.png
+    - assets/setting.png
+    - assets/todo.png
+    - assets/history.png
+    - assets/profile.png
+    - assets/workerimage.png
+    - assets/setting1.png
+    - assets/userhistory.png
+    - assets/adminicon.png
+    - assets/usermgmt.png
+
+  fonts:
+    - family: SFProText
+      fonts:
+        - asset: assets/fonts/SF-Pro-Text-Thin.otf
+          weight: 100
+        - asset: assets/fonts/SF-Pro-Text-Regular.otf
+          weight: 400
+        - asset: assets/fonts/SF-Pro-Text-Medium.otf
+          weight: 500
+        - asset: assets/fonts/SF-Pro-Text-Bold.otf
+          weight: 700
+
+    - family: Newsreader
+      fonts:
+        - asset: assets/fonts/Newsreader-Regular.ttf
+          weight: 700
+  
+ 
