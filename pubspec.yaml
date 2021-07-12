@@ -60,6 +60,8 @@ flutter:
     - assets/userhistory.png
     - assets/adminicon.png
     - assets/usermgmt.png
+    - assets/serviceimage/laptopreparing.png
+    - assets/serviceimage/tv.png
 
   fonts:
     - family: SFProText

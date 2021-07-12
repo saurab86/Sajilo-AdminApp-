@@ -1,4 +1,3 @@
-import 'package:admin/navigationScreen/verified.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,8 +5,8 @@ import 'package:flutter/material.dart';
 
 class WorkerReqAnimationPage extends CupertinoPageRoute {
   //String currentKey;   //////// admin le verify click garesi tyo paticular cointair ko worker details lai key hold garna string banako
-
-  WorkerReqAnimationPage()
+ String dbk;
+  WorkerReqAnimationPage({this.dbk})
       : super(builder: (BuildContext context) => new WorkerRequests());
 
 
@@ -46,6 +45,8 @@ class _WorkerRequestsState extends State<WorkerRequests> {
   }
 
   Widget _buildWorkerRequest({Map workerrequest}) {
+    if(workerrequest['serviceStatus']=='Pending'){
+    
     return Container(
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
@@ -214,7 +215,17 @@ class _WorkerRequestsState extends State<WorkerRequests> {
                     ],),
                     SizedBox(height: 15,),
 
+                    Row(
+                    children: [
+                      Text("Request Status:",style: TextStyle(fontFamily: 'Newsreader',fontSize: 16)),
+                      SizedBox(width: 4,),
+                      Text(workerrequest['serviceStatus'],style: TextStyle(fontFamily: 'Newsreader',fontSize: 16)),
+                      SizedBox(width:5,),
+                      Icon(Icons.hourglass_bottom_sharp)
+                    ],
                     
+                  ) , 
+                  SizedBox(height:8),
 
                //////////////////
                   Row(
@@ -223,12 +234,15 @@ class _WorkerRequestsState extends State<WorkerRequests> {
                         style: ButtonStyle(   backgroundColor: MaterialStateProperty.all<Color>(Colors.green),),
                         child: Text('Verify Account',style: TextStyle(fontFamily: 'Newsreader'),),
                         onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (_)=>VerifyAccount(currentidKey: workerrequest['key'])));
+                          _requestStatus(workerrequest: workerrequest);
                         })
                     ],
                   ) , 
 
                 SizedBox(height: 12,),
+                
+
+
 
                 Text(workerrequest['key'])
 
@@ -236,11 +250,253 @@ class _WorkerRequestsState extends State<WorkerRequests> {
           ],
       ),
     ),
+        ));}
+        else { 
+
+           return Container(
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+                  child: Container(
+      width: MediaQuery.of(context).size.width,
+      color: Color(0xFFFFFFFF),
+      margin: EdgeInsets.symmetric(vertical: 8.0),
+      padding: EdgeInsets.all(8.0),
+      height: 300,
+      child: Column(
+          children: [
+            SizedBox(
+              height: 13.0,
+            ),
+
+        ///////////////////////
+          Row(
+              children: [
+                Icon(
+                  Icons.person,
+                  size: 20,
+                  color: Colors.indigo,
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  "Name:",
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      fontFamily: 'Newsreader',
+                      fontWeight: FontWeight.w400,
+                      color: Colors.brown[600]),
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  workerrequest['name'],
+                  style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader'),
+                ),
+              ],
+            ),
+            SizedBox(height:12),
+
+            /////////////////////////////////////
+            Row(
+              children: [
+                Icon(
+                  Icons.mail_outline,
+                  size: 20,
+                  color: Colors.indigo,
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  "Email:",
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      fontFamily: 'Newsreader',
+                      fontWeight: FontWeight.w400,
+                      color: Colors.brown[600]),
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  workerrequest['email'],
+                  style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader'),
+                ),
+              ],
+            ),
+            SizedBox(height: 12),
+
+
+           ////////////////////////////
+            Row(
+              children: [
+                Icon(
+                  Icons.location_on_outlined,
+                  size: 20,
+                  color: Colors.indigo,
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  "Address:",
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      fontFamily: 'Newsreader',
+                      fontWeight: FontWeight.w400,
+                      color: Colors.brown[600]),
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  workerrequest['address'],
+                  style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader'),
+                ),
+              ],
+            ),
+            SizedBox(height: 12.0,),
+
+
+            //////////////////////////////
+            Row(
+              children: [
+                Icon(
+                  Icons.phone_iphone_rounded,
+                  size: 20,
+                  color: Colors.indigo,
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  "Mobile Number:",
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      fontFamily: 'Newsreader',
+                      fontWeight: FontWeight.w400,
+                      color: Colors.brown[600]),
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  workerrequest['mobilenumber'],
+                  style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader'),
+                ),
+              ],
+            ),
+            SizedBox(height: 12.0),
+
+            ////////////////////////////////////////
+             Row(
+            children: [
+                      Icon(
+                        Icons.account_circle_outlined,
+                        size: 16,
+                        color: Colors.indigo,
+                      ),
+                      Icon(
+                        Icons.build,
+                        size: 14,
+                        color: Colors.indigo,
+                      ),
+                      Text(
+                        "Service Provider of:",
+                        style: TextStyle(
+                            fontSize: 16.0,
+                            fontFamily: 'Newsreader',
+                            fontWeight: FontWeight.w400,
+                            color: Colors.brown[600]),
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        workerrequest['servicename'],
+                        style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader'),
+                      ),
+                    ],),
+                    SizedBox(height: 15,),
+
+                    Row(
+                    children: [
+                      Text("Request Status:",style: TextStyle(fontFamily: 'Newsreader',fontSize: 16)),
+                      SizedBox(width: 4,),
+                      Text(workerrequest['serviceStatus'],style: TextStyle(fontFamily: 'Newsreader',fontSize: 16)),
+                      SizedBox(width:5,),
+                      Icon(Icons.done_all,color: Colors.blue,)
+                    ],
+                    
+                  ) , 
+                  SizedBox(height:8),
+                Text(workerrequest['key'])
+
+
+          ],
+      ),
+    ),
         ));
+        }
   }
 
-  
+  _requestStatus({Map workerrequest}){
 
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (_) => AlertDialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14.0)),
+              backgroundColor: Colors.blueGrey[200],
+              title: new Text(
+                "Verify Service Provider?",
+                style: TextStyle(
+                  fontFamily: 'Newsreader',
+                ),
+                textAlign: TextAlign.center,
+              ),
+              content: new Text(
+                "Do you want to verify this user?",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader'),
+              ),
+              actions: <Widget>[
+                TextButton(
+                    onPressed: () {
+                      updateServiceStatus(
+                          workerrequest['key'], workerrequest['serviceStatus']);
+                    },
+                    child: Text(
+                      'Yes',
+                      style: TextStyle(
+                          fontSize: 16.0,
+                          fontFamily: 'Newsreader',
+                          color: Colors.white),
+                    )),
+                SizedBox(
+                  width: 35.0,
+                ),
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      'No',
+                      style: TextStyle(
+                          fontFamily: 'Newsreader',
+                          fontSize: 16.0,
+                          color: Colors.white),
+                    ))
+              ],
+            ));  
+                    }
+ updateServiceStatus(String dbk, workerrequest) async{
+              await reference.child('$dbk').update({'serviceStatus':'Verified'}).whenComplete(() => 
+              Navigator.pop(context));
+            }
   @override
   Widget build(BuildContext context) {
     const curveHeight = 25.0;

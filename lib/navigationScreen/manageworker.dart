@@ -1,3 +1,4 @@
+import 'package:admin/navigationScreen/verified.dart';
 import 'package:admin/navigationScreen/worker_request.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class _ManageWorkerPageState extends State<ManageWorkerPage> {
         ),
         body: Center(
             child: Container(
-                height: 225.0,
+                height: 300.0,
                 margin: EdgeInsets.all(10.0),
                 padding: const EdgeInsets.all(30.0),
                 decoration:
@@ -46,7 +47,7 @@ class _ManageWorkerPageState extends State<ManageWorkerPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height: 25,
+                      height: 10,
                     ),
                     ElevatedButton.icon(
                       onPressed: () {
@@ -82,23 +83,45 @@ class _ManageWorkerPageState extends State<ManageWorkerPage> {
             color: Colors.grey,
           ),
                     /////////////////
-                    ElevatedButton.icon(
+          //           ElevatedButton.icon(
+          //             style: ButtonStyle(
+          //                 backgroundColor: MaterialStateProperty.all<Color>(
+          //                     Color(0xFFFFC107))),
+          //             onPressed: () {
+          //               Navigator.push(
+          //                   context,
+          //                   MaterialPageRoute(
+          //                       builder: (_) => WorkerRequests()));
+          //             },
+          //             icon: Icon(Icons.person_add_alt_1_outlined),
+          //             label: Text(
+          //               "Create worker's Account",
+          //               style: TextStyle(
+          //                   fontFamily: 'Newsreader', color: Color(0xFF212121),fontSize: 18),
+          //             ),
+          //           ),
+          //                   Divider(
+          //   height: 15,
+          //   color: Colors.grey,
+          // ),
+                  
+                ElevatedButton.icon(
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                              Color(0xFFFFC107))),
+                              Colors.teal)),
                       onPressed: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (_) => WorkerRequests()));
+                                builder: (_) => VerifyAccount()));
                       },
-                      icon: Icon(Icons.person_add_alt_1_outlined),
+                      icon: Icon(Icons.list_alt),
                       label: Text(
-                        "Create worker's Account",
+                        "Workers Lists",
                         style: TextStyle(
                             fontFamily: 'Newsreader', color: Color(0xFF212121),fontSize: 18),
                       ),
-                    )
+                    ),
                   ],
                 ))));
   }
