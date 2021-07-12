@@ -1,6 +1,7 @@
 import 'package:admin/Screens/userhistory.dart';
 import 'package:admin/navigationScreen/manageuser.dart';
 import 'package:admin/navigationScreen/manageworker.dart';
+import 'package:admin/navigationScreen/userfeedback.dart';
 import 'package:flutter/material.dart';
 
 
@@ -8,13 +9,13 @@ var services = [
   "User History",
   "Manage Worker",
   "Manage User",
-  "Settings",
+  "User Feedback",
 ];
 var img = [
   "assets/userhistory.png",
   "assets/workerimage.png",
   "assets/usermgmt.png",
-  "assets/setting1.png",
+  "assets/feedback.png",
 ];
 
 var bookingsroutes = [
@@ -56,7 +57,7 @@ class _Gridlist extends State<Gridlist> {
                 } else if (index == 2) {
                 Navigator.of(context).push(ManageUserAnimationPage());
                 } else {
-              
+                  Navigator.push(context, MaterialPageRoute(builder: (_)=>UserFeedbacks()));
                 }
               },
               child: Column(

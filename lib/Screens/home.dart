@@ -163,10 +163,10 @@ class CustomDrawer extends StatelessWidget {
          
           ListTile(
             onTap: () {
-              
+            SystemNavigator.pop();
             },
             leading: Icon(Icons.exit_to_app),
-            title: Text("Log Out"),
+            title: Text("Exit"),
           ),
         ],
       ),

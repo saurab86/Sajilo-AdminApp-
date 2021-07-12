@@ -62,6 +62,7 @@ flutter:
     - assets/usermgmt.png
     - assets/serviceimage/laptopreparing.png
     - assets/serviceimage/tv.png
+    - assets/feedback.png
 
   fonts:
     - family: SFProText
