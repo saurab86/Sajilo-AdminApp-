@@ -42,7 +42,7 @@ class _UserBookingHistoryState extends State<UserBookingHistory> {
       return SafeArea(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          color: Colors.teal[300],
+          color: Colors.white70,
           margin: EdgeInsets.symmetric(vertical: 8.0),
           padding: EdgeInsets.all(8.0),
           height: 360.0,
@@ -482,6 +482,12 @@ class _UserBookingHistoryState extends State<UserBookingHistory> {
                 SizedBox(height: 12,),
                 Text(" Service has been Sucessfully Completed! ",style: TextStyle(fontFamily: 'Newsreader',fontSize: 18,color: Colors.green[700],
               ),),
+              SizedBox(height: 8,),
+              Row(children: [
+                Text('Accepted by:',style: TextStyle(fontFamily: 'Newsreader',fontSize: 16),),
+                SizedBox(width: 5,),
+                Text(bookinginfo['AcceptedBy'],style: TextStyle(fontFamily: 'Newsreader',fontSize: 16),)
+              ],)
               ],
             ),
           ),
@@ -703,6 +709,42 @@ class _UserBookingHistoryState extends State<UserBookingHistory> {
                     Icon(Icons.done_all_rounded, color: Colors.blueAccent)
                   ],
                 )),
+
+                SizedBox(height: 10,),
+
+                Row(
+                children: [
+                  Text("Service Status:",style: TextStyle(fontFamily: 'Newsreader',fontSize: 16),),
+                  SizedBox(width: 4,),
+                  Text(bookinginfo['serviceStatus'],style: TextStyle(fontFamily: 'Newsreader',fontSize: 16),),
+                   SizedBox(
+                      width: 5,
+                    ),
+                    Icon(
+                      Icons.hourglass_empty_rounded,
+                      size: 20.0,
+                    )
+                ],
+                ),
+                SizedBox(height: 5,),
+                
+
+                Row(
+                  children: [
+                    Text(
+                      'Accepted by :',
+                      style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader',color: Colors.brown[600]),
+                    ),
+                    SizedBox(width: 5),
+                    Expanded(
+                              child: Text(
+                        bookinginfo['AcceptedBy'],
+                        style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader'),
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(height: 10,),
 
                  Row(
                   children: [
