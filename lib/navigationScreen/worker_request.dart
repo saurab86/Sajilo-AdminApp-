@@ -1,7 +1,9 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class WorkerReqAnimationPage extends CupertinoPageRoute {
   //String currentKey;   //////// admin le verify click garesi tyo paticular cointair ko worker details lai key hold garna string banako
@@ -55,7 +57,7 @@ class _WorkerRequestsState extends State<WorkerRequests> {
       color: Color(0xFFFFFFFF),
       margin: EdgeInsets.symmetric(vertical: 8.0),
       padding: EdgeInsets.all(8.0),
-      height: 300,
+      height: 350,
       child: Column(
           children: [
             SizedBox(
@@ -176,9 +178,27 @@ class _WorkerRequestsState extends State<WorkerRequests> {
                 SizedBox(
                   width: 8,
                 ),
-                Text(
-                  workerrequest['mobilenumber'],
-                  style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader'),
+                TextButton(
+                  onPressed: (){},
+                  onLongPress: (){
+                     Clipboard.setData(ClipboardData(text: workerrequest['mobilenumber']));
+                       Flushbar(
+                        icon: Icon(
+                          Icons.done_all_sharp,
+                          size: 32.0,
+                          color: Colors.blue,
+                        ),
+                        title: 'Successfully Copied',
+                        message: 'to clipboard',
+                        flushbarPosition: FlushbarPosition.TOP,
+                        duration: Duration(seconds: 2),
+                        onTap: (_) {},
+                      ).show(context);
+                  },
+                  child: Text(
+                    workerrequest['mobilenumber'],
+                    style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader',decoration: TextDecoration.underline,fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),
@@ -361,7 +381,7 @@ class _WorkerRequestsState extends State<WorkerRequests> {
 
 
             //////////////////////////////
-            Row(
+             Row(
               children: [
                 Icon(
                   Icons.phone_iphone_rounded,
@@ -382,9 +402,27 @@ class _WorkerRequestsState extends State<WorkerRequests> {
                 SizedBox(
                   width: 8,
                 ),
-                Text(
-                  workerrequest['mobilenumber'],
-                  style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader'),
+                TextButton(
+                  onPressed: (){},
+                  onLongPress: (){
+                     Clipboard.setData(ClipboardData(text: workerrequest['mobilenumber']));
+                       Flushbar(
+                        icon: Icon(
+                          Icons.done_all_sharp,
+                          size: 32.0,
+                          color: Colors.blue,
+                        ),
+                        title: 'Successfully Copied',
+                        message: 'to clipboard',
+                        flushbarPosition: FlushbarPosition.TOP,
+                        duration: Duration(seconds: 2),
+                        onTap: (_) {},
+                      ).show(context);
+                  },
+                  child: Text(
+                    workerrequest['mobilenumber'],
+                    style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader',decoration: TextDecoration.underline,fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),

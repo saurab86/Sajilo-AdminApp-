@@ -1,6 +1,8 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -81,8 +83,7 @@ class _UserBookingHistoryState extends State<UserBookingHistory> {
                 SizedBox(
                   height: 10.0,
                 ),
-
-                Row(
+ Row(
                   children: [
                     Icon(
                       Icons.phone,
@@ -102,9 +103,27 @@ class _UserBookingHistoryState extends State<UserBookingHistory> {
                     SizedBox(
                       width: 8,
                     ),
-                    Text(
-                      bookinginfo['mobilenumber'],
-                      style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader'),
+                    TextButton(
+                      onPressed: (){},
+                      onLongPress: (){
+                       Clipboard.setData(ClipboardData(text: bookinginfo['mobilenumber']));
+                       Flushbar(
+                        icon: Icon(
+                          Icons.done_all_sharp,
+                          size: 32.0,
+                          color: Colors.blue,
+                        ),
+                        title: 'Successfully Copied',
+                        message: 'to clipboard',
+                        flushbarPosition: FlushbarPosition.TOP,
+                        duration: Duration(seconds: 2),
+                        onTap: (_) {},
+                      ).show(context);
+                      },
+                      child: Text(
+                        bookinginfo['mobilenumber'],
+                        style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader'),
+                      ),
                     ),
                   ],
                 ),
@@ -295,7 +314,7 @@ class _UserBookingHistoryState extends State<UserBookingHistory> {
           color: Colors.lightBlue[100],
           margin: EdgeInsets.symmetric(vertical: 8.0),
           padding: EdgeInsets.all(8.0),
-          height: 290.0,
+          height: 320.0,
           child: SafeArea(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -333,8 +352,53 @@ class _UserBookingHistoryState extends State<UserBookingHistory> {
                   ],
                 ),
                 SizedBox(
-                  height: 10.0,
+                  height: 8.0,
                 ),
+                 Row(
+                  children: [
+                    Icon(
+                      Icons.phone,
+                      size: 20,
+                      color: Colors.indigo,
+                    ),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    Text(
+                      "Mobile Number:",
+                      style: TextStyle(
+                          fontSize: 16.0,
+                          fontFamily: 'Newsreader',
+                          color: Colors.brown[600]),
+                    ),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    TextButton(
+                      onPressed: (){},
+                      onLongPress: (){
+                       Clipboard.setData(ClipboardData(text: bookinginfo['mobilenumber'],));
+                       Flushbar(
+                        icon: Icon(
+                          Icons.done_all_sharp,
+                          size: 32.0,
+                          color: Colors.blue,
+                        ),
+                        title: 'Successfully Copied',
+                        message: 'to clipboard',
+                        flushbarPosition: FlushbarPosition.TOP,
+                        duration: Duration(seconds: 2),
+                        onTap: (_) {},
+                      ).show(context);
+                      },
+                      child: Text(
+                        bookinginfo['mobilenumber'],
+                        style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader',decoration: TextDecoration.underline,fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+              //  SizedBox(height: 10,),
                 SafeArea(
                   child: Row(
                     children: [
@@ -503,7 +567,7 @@ class _UserBookingHistoryState extends State<UserBookingHistory> {
           color: Colors.teal[300],
           margin: EdgeInsets.symmetric(vertical: 8.0),
           padding: EdgeInsets.all(8.0),
-          height: 330.0,
+          height: 350.0,
           child: SafeArea(
             child: Column(
               // Text('History'),
@@ -515,7 +579,7 @@ class _UserBookingHistoryState extends State<UserBookingHistory> {
                     Icon(
                       Icons.person,
                       size: 20,
-                      color: Colors.indigo,
+                      color: Colors.black,
                     ),
                     SizedBox(
                       width: 8,
@@ -536,15 +600,13 @@ class _UserBookingHistoryState extends State<UserBookingHistory> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 10.0,
-                ),
+               
                 
 
-                Row(
+                 Row(
                   children: [
                     Icon(
-                      Icons.person,
+                      Icons.phone,
                       size: 20,
                       color: Colors.indigo,
                     ),
@@ -561,9 +623,27 @@ class _UserBookingHistoryState extends State<UserBookingHistory> {
                     SizedBox(
                       width: 8,
                     ),
-                    Text(
-                      bookinginfo['mobilenumber'],
-                      style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader'),
+                    TextButton(
+                      onPressed: (){},
+                      onLongPress: (){
+                       Clipboard.setData(ClipboardData(text: bookinginfo['mobilenumber']));
+                       Flushbar(
+                        icon: Icon(
+                          Icons.done_all_sharp,
+                          size: 32.0,
+                          color: Colors.blue,
+                        ),
+                        title: 'Successfully Copied',
+                        message: 'to clipboard',
+                        flushbarPosition: FlushbarPosition.TOP,
+                        duration: Duration(seconds: 2),
+                        onTap: (_) {},
+                      ).show(context);
+                      },
+                      child: Text(
+                        bookinginfo['mobilenumber'],
+                        style: TextStyle(fontSize: 16.0, fontFamily: 'Newsreader',color: Colors.black,decoration: TextDecoration.underline,fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ],
                 ),
