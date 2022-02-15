@@ -552,12 +552,6 @@ class _UserBookingHistoryState extends State<UserBookingHistory> {
                 SizedBox(width: 5,),
                 Text(bookinginfo['AcceptedBy'],style: TextStyle(fontFamily: 'Newsreader',fontSize: 16),)
               ],),
-
-                 Row(children: [
-                Text('Accepted by:',style: TextStyle(fontFamily: 'Newsreader',fontSize: 16),),
-                SizedBox(width: 5,),
-                Text(bookinginfo['AcceptedBy'],style: TextStyle(fontFamily: 'Newsreader',fontSize: 16),)
-              ],)
               ],
             ),
           ),
