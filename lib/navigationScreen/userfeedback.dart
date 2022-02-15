@@ -46,11 +46,16 @@ Widget _buildUserFeedbacks({Map userfeedback}) {
                     SizedBox(
                       width: 6,
                     ),
-                    Text(
-                      userfeedback['email'] +".",
-                      style: TextStyle(fontSize: 17.0, fontFamily: 'Newsreader',color: Colors.black,
-                      fontWeight: FontWeight.bold),
+                      Expanded(
+                    child: Text(
+                      userfeedback['email'],
+                      style: TextStyle(
+                          fontSize: 17.0,
+                          fontFamily: 'Newsreader',
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold),
                     ),
+                  ),
                   ],
                 ),
                  
